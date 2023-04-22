@@ -31,12 +31,12 @@ def convert(buf):
 	im = im.copy()
 	return im
 	
-print "Start acquisition"
+print("Start acquisition")
 camera.start_acquisition()
 
 while True:
 	buffer = stream.try_pop_buffer()
-	print buffer 
+	print(buffer) 
 	if buffer:
 		frame = convert(buffer)
 		stream.push_buffer(buffer) #push buffer back into stream
