@@ -1,4 +1,8 @@
-# install dependencies for tiscam
+# How to use Gige camera with Raspberry Pi 3B+
+
+This is a step by step guide to install the tiscamera software on a Raspberry Pi 3B+ and use it with opencv.
+
+## install dependencies for tiscam
 
 `sudo apt install autoconf aravis-tools glade cmake g++ git gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools gstreamer1.0-x gtk-doc-tools intltool libqt5gstreamer-dev libaudit-dev libaudit1 libgirepository1.0-dev libglib2.0-dev libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libnotify-dev libnotify4 libpcap-dev libpcap0.8 libtinyxml-dev libudev-dev libudev1 libusb-1.0-0-dev libxml2 libxml2-dev libzip-dev pkg-config python-setuptools python3-sphinx qtbase5-dev qtdeclarative5-dev uvcdynctrl  -y`
 
@@ -8,7 +12,7 @@
 
 `export PATH="$HOME/.local/bin:$PATH"`
 
-# install tiscam
+## install tiscam
 
 `git clone --recursive https://github.com/TheImagingSource/tiscamera.git`
 
@@ -24,7 +28,7 @@
 
 `sudo make install`
 
-# start tcam service
+## start tcam service
 
 `sudo systemctl daemon-reload`
 
@@ -32,11 +36,11 @@
 
 `sudo systemctl start tcam-gige-daemon.service`
 
-# start gui
+## start gui
 
 `tcam-capture`
 
-# install opencv with aravis
+## install opencv with aravis
 
 `cd ~`
 
@@ -50,9 +54,9 @@
 
 `make -j4`
 
-# last 2 percent need lots of memory, you may need to increase swap temporarily, use make -j1 to save some memory for the last bit.
+## last 2 percent need lots of memory, you may need to increase swap temporarily, use make -j1 to save some memory for the last bit.
 
-# ------ increase swap --------
+## ------ increase swap --------
 
 `sudo dphys-swapfile swapoff`
 
@@ -64,7 +68,7 @@
 
 `sudo dphys-swapfile swapon`
 
-# -----------------------------
+## -----------------------------
 
 `sudo make install`
 
@@ -72,7 +76,7 @@
 
 `export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH`
 
-# Install Aravis
+## Install Aravis
 
 `sudo apt install meson ninja-build`
 
@@ -98,7 +102,7 @@
 
 `sudo ldconfig `
 
-# Install opencv
+## Install opencv
 
 `pip install opencv-python==4.5.3.56`
 
