@@ -4,7 +4,7 @@ This is a step by step guide to install the tiscamera software on a Raspberry Pi
 
 **This guide is not complete yet.**
 
-## install dependencies for tiscam
+## install dependencies
 
 ```
 sudo apt install autoconf aravis-tools glade cmake g++ git gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools gstreamer1.0-x gtk-doc-tools intltool libqt5gstreamer-dev libaudit-dev libaudit1 libgirepository1.0-dev libglib2.0-dev libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libnotify-dev libnotify4 libpcap-dev libpcap0.8 libtinyxml-dev libudev-dev libudev1 libusb-1.0-0-dev libxml2 libxml2-dev libzip-dev pkg-config python-setuptools python3-sphinx qtbase5-dev qtdeclarative5-dev uvcdynctrl  -y
