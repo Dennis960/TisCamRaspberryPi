@@ -8,14 +8,15 @@ import ctypes
 import numpy as np
 
 Aravis.update_device_list()
-Aravis.update_device_list()
-devices = Aravis.get_n_devices()
 camera = Aravis.Camera.new(None)
-print(camera.get_device_id())
-# camera = Aravis.Camera.new(None)
-# stream = camera.create_stream(None, None)
+print("Found camera with name: " + camera.get_device_id())
+stream = camera.create_stream(None, None)
 
-# payload = camera.get_payload()
+payload = camera.get_payload()
+
+print("Payload: " + str(payload))
+print("Width: " + str(camera.get_width()))
+print("Stream: " + str(stream))
 
 # for i in range(0,50):
 # 	stream.push_buffer(Aravis.Buffer.new_allocate(payload))
