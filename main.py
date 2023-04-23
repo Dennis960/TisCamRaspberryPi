@@ -7,14 +7,14 @@ import cv2
 import ctypes
 import numpy as np
 
-Aravis.enable_interface("Fake") # using arv-fake-gv-camera-0.6
+Aravis.update_device_list()
 camera = Aravis.Camera.new(None)
-stream = camera.create_stream (None, None)
+stream = camera.create_stream(None, None)
 
-payload = camera.get_payload ()
+payload = camera.get_payload()
 
 for i in range(0,50):
-	stream.push_buffer (Aravis.Buffer.new_allocate (payload))
+	stream.push_buffer(Aravis.Buffer.new_allocate (payload))
 
 def convert(buf):
 	if not buf:

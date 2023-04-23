@@ -195,3 +195,13 @@ pip install opencv-python==4.5.3.56
 ```
 pip install --upgrade numpy
 ```
+
+```
+sudo apt install libatlas-base-dev
+```
+
+## Run the python script
+
+```
+python main.py
+```
