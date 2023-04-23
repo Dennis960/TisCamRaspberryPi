@@ -46,9 +46,11 @@ while True:
             continue
         stream.push_buffer(buf) #push buffer back into stream
 
-        # image to color
+        if frame is None:
+            print("Did not get a frame")
+            continue
+        
         frame = cv2.cvtColor(frame, cv2.COLOR_BAYER_RG2RGB)
-
         cv2.imshow("frame", frame)
         ch = cv2.waitKey(1) & 0xFF
         if ch == ord('q') or ch == 27: # 27 is the ESC key
