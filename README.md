@@ -202,6 +202,20 @@ sudo apt install libatlas-base-dev
 
 ## Run the python script
 
+### Get a live preview
+
 ```
 python main.py
+```
+
+### Get a single frame
+
+```
+python
+import single_frame
+width = 1920
+height = 1080
+exposure_us = 100000
+# optional parameters
+image = single_frame.get(width, height, exposure_us)
 ```

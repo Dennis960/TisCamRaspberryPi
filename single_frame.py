@@ -4,7 +4,7 @@ from gi.repository import Aravis
 
 from convert import convert
 
-def get_frame_as_cv2(width = 4112, height = 2176, exposure_us = 100000):
+def get(width = 4112, height = 2176, exposure_us = 100000):
     """
     Get a single frame from the camera as a cv2 image
 
