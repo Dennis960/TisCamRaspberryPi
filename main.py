@@ -8,16 +8,13 @@ import ctypes
 import numpy as np
 
 camera=Aravis.Camera()
-dev=camera.get_device()
-print('raw temperature [uncalibrated]:',dev.get_integer_feature_value("SensorTemperatureRegisterRawValue"))
-print('device temperature [°C]:',.001*dev.get_integer_feature_value("DeviceTemperature"))
+print("Camera found: ", camera.get_device_id())
 
-if 1:
-    stream=camera.create_stream(None,None)
-    stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
-    camera.start_acquisition()
-    buf=stream.pop_buffer()
-    print(buf)
+stream=camera.create_stream(None,None)
+stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
+camera.start_acquisition()
+buf=stream.pop_buffer()
+print(buf)
 
 def convert(buf):
 	if not buf:
