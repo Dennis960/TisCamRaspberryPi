@@ -18,6 +18,7 @@ def convert(buf):
         INTP = ctypes.POINTER(ctypes.c_uint16)
     addr = buf.get_data()
     ptr = ctypes.cast(addr, INTP)
+    print(buf.get_image_width(), buf.get_image_height())
     im = np.ctypeslib.as_array(ptr, (buf.get_image_height(), buf.get_image_width()))
     im = im.copy()
     return im
