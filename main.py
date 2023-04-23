@@ -8,6 +8,9 @@ import ctypes
 import numpy as np
 
 camera=Aravis.Camera()
+dev=camera.get_device()
+print('raw temperature [uncalibrated]:',dev.get_integer_feature_value("SensorTemperatureRegisterRawValue"))
+print('device temperature [°C]:',.001*dev.get_integer_feature_value("DeviceTemperature"))
 
 if 1:
     stream=camera.create_stream(None,None)
