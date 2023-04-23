@@ -25,6 +25,9 @@ def convert(buf):
 
 camera=Aravis.Camera()
 print("Camera found: ", camera.get_device_id())
+camera.set_region(0,0,640,480)
+camera.set_pixel_format(Aravis.PIXEL_FORMAT_BAYER_BG_8)
+camera.set_frame_rate(2)
 
 stream=camera.create_stream(None,None)
 stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
