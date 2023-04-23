@@ -33,19 +33,23 @@ stream=camera.create_stream(None,None)
 stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
 camera.start_acquisition()
 
+buf = stream.pop_buffer()
 while True:
-    buf = stream.pop_buffer()
-    print(buf) 
     if buf:
-        frame = convert(buf)
+        try:
+            frame = convert(buf)
+        except Exception as e:
+            print(e)
         stream.push_buffer(buf) #push buffer back into stream
+
+        # image to color
+        frame = cv2.cvtColor(frame, cv2.COLOR_BAYER_RG2RGB)
 
         cv2.imshow("frame", frame)
         ch = cv2.waitKey(1) & 0xFF
-        if ch == 27 or ch == ord('q'):
+        if ch == ord('q') or ch == 27: # 27 is the ESC key
             break
-        elif ch == ord('s'):
+        if ch == ord('s'):
             cv2.imwrite("imagename.png",frame)
-
 
 camera.stop_acquisition()
