@@ -35,8 +35,8 @@ stream=camera.create_stream(None,None)
 stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
 camera.start_acquisition()
 
-buf = stream.pop_buffer()
 while True:
+    buf = stream.pop_buffer()
     if buf:
         try:
             frame = convert(buf)
