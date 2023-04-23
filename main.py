@@ -1,29 +1,9 @@
-# Ararvis python videcapture
 import gi
 gi.require_version("Aravis", "0.8")
 from gi.repository import Aravis
 
 import cv2
-import ctypes
-import numpy as np
-
-def convert(buf):
-    if not buf:
-        return None
-    pixel_format = buf.get_image_pixel_format()
-    bits_per_pixel = pixel_format >> 16 & 0xff
-    if bits_per_pixel == 8:
-        INTP = ctypes.POINTER(ctypes.c_uint8)
-    else:
-        INTP = ctypes.POINTER(ctypes.c_uint16)
-    addr = buf.get_data()
-    ptr = ctypes.cast(addr, INTP)
-    print("Captured image: ", buf.get_image_width(), buf.get_image_height())
-    if (buf.get_image_width() == 0 or buf.get_image_height() == 0):
-        return None
-    im = np.ctypeslib.as_array(ptr, (buf.get_image_height(), buf.get_image_width()))
-    im = im.copy()
-    return im
+from convert import convert
 
 camera=Aravis.Camera()
 print("Camera found: ", camera.get_device_id())
@@ -50,7 +30,6 @@ while True:
             print("Did not get a frame")
             continue
         
-        frame = cv2.cvtColor(frame, cv2.COLOR_BAYER_RG2RGB)
         frame_720p = cv2.resize(frame, (1280, 720))
         cv2.imshow("frame 720p", frame_720p)
         ch = cv2.waitKey(1) & 0xFF
