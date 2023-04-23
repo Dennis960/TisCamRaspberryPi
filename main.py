@@ -18,7 +18,9 @@ def convert(buf):
         INTP = ctypes.POINTER(ctypes.c_uint16)
     addr = buf.get_data()
     ptr = ctypes.cast(addr, INTP)
-    print(buf.get_image_width(), buf.get_image_height())
+    print("Captured image: ", buf.get_image_width(), buf.get_image_height())
+    if (buf.get_image_width() == 0 or buf.get_image_height() == 0):
+        return None
     im = np.ctypeslib.as_array(ptr, (buf.get_image_height(), buf.get_image_width()))
     im = im.copy()
     return im
