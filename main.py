@@ -40,6 +40,7 @@ while True:
             frame = convert(buf)
         except Exception as e:
             print(e)
+            continue
         stream.push_buffer(buf) #push buffer back into stream
 
         # image to color
