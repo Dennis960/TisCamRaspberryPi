@@ -15,7 +15,6 @@ stream = camera.create_stream(None, None)
 payload = camera.get_payload()
 
 print("Payload: " + str(payload))
-print("Width: " + str(camera.get_width()))
 print("Stream: " + str(stream))
 
 # for i in range(0,50):
