@@ -32,6 +32,8 @@ def convert(buf):
 	return im
 	
 print("Start acquisition")
+stream=camera.create_stream(None,None)
+stream.push_buffer(Aravis.Buffer.new_allocate(camera.get_payload()))
 camera.start_acquisition()
 
 while True:
