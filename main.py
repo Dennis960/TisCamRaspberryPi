@@ -27,7 +27,7 @@ def convert(buf):
 
 camera=Aravis.Camera()
 print("Camera found: ", camera.get_device_id())
-camera.set_region(0,0,640,480)
+camera.set_region(0,0,1920,1080)
 camera.set_pixel_format(Aravis.PIXEL_FORMAT_BAYER_RG_8)
 camera.set_frame_rate(2)
 
@@ -57,5 +57,6 @@ while True:
             break
         if ch == ord('s'):
             cv2.imwrite("imagename.png",frame)
+            print("Image saved to imagename.png")
 
 camera.stop_acquisition()
